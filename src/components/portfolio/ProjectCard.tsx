@@ -14,7 +14,7 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tags, liveUrl, githubUrl }) => {
   return (
-    <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-lg hover:border-primary/50">
+    <Card className="flex flex-col h-full transition-all duration-500 hover:shadow-2xl hover:border-primary/70 hover:-translate-y-1 hover:rotate-1">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
