@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import TypingEffectTitle from "@/components/portfolio/TypingEffectTitle";
 
 const Home = () => {
-  const titleText = "Hi, I'm Yassin Boufous.";
+  const titleText = "Hi, I'm Yassin Boufous"; // Removed the period
   
   return (
     <div className="min-h-screen flex flex-col">
