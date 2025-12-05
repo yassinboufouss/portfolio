@@ -15,12 +15,23 @@ const TypingEffectTitle: React.FC<TypingEffectTitleProps> = ({
   const [isTypingComplete, setIsTypingComplete] = useState(false);
 
   useEffect(() => {
+    setDisplayedText(""); // Reset on text change
+    setIsTypingComplete(false);
+
     const timer = setTimeout(() => {
       let i = 0;
       const intervalId = setInterval(() => {
         if (i < text.length) {
-          setDisplayedText((prev) => prev + text[i]);
-          i++;
+          const nextChar = text[i];
+          // Defensive check: only append if character exists
+          if (nextChar !== undefined) {
+            setDisplayedText((prev) => prev + nextChar);
+            i++;
+          } else {
+            // Should not happen, but stop if it does
+            clearInterval(intervalId);
+            setIsTypingComplete(true);
+          }
         } else {
           clearInterval(intervalId);
           setIsTypingComplete(true);
@@ -43,7 +54,7 @@ const TypingEffectTitle: React.FC<TypingEffectTitleProps> = ({
     }
 
     // Typing has reached or passed the start of the name
-    const preName = text.substring(0, nameIndex); // "Hi, I'm "
+    const preName = text.substring(0, nameIndex);
     
     // Determine how much of the name has been typed
     const nameTypedLength = Math.min(displayedText.length - nameIndex, name.length);
