@@ -1,6 +1,6 @@
 import Header from "@/components/layout/Header";
 import { Button } from "@/components/ui/button";
-import { LiquidButton } from "@/components/ui/LiquidButton"; // Import LiquidButton
+import { LiquidButton } from "@/components/ui/LiquidButton";
 import { ArrowRight } from "lucide-react";
 import AboutSection from "@/components/portfolio/AboutSection";
 import ProjectsSection from "@/components/portfolio/ProjectsSection";
@@ -10,6 +10,7 @@ import Footer from "@/components/layout/Footer";
 import { Link } from "react-router-dom";
 import TypingEffectTitle from "@/components/portfolio/TypingEffectTitle";
 import { cn } from "@/lib/utils";
+import TestimonialsSection from "@/components/portfolio/TestimonialsSection";
 
 const Home = () => {
   const staticPrefix = "Hi, I'm Yassin Boufous, a ";
@@ -59,6 +60,7 @@ const Home = () => {
         <AboutSection />
         <ProjectsSection />
         <SkillsSection />
+        <TestimonialsSection />
         <ContactSection />
       </main>
       
