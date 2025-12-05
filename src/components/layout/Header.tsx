@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -22,34 +23,41 @@ const Header: React.FC = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-4">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.href}
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-              {item.name}
-            </Link>
-          ))}
-          <Button variant="secondary" size="sm">
-            Resume
-          </Button>
-        </nav>
+        <div className="hidden md:flex items-center space-x-4">
+          <nav className="flex items-center space-x-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.href}
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+          <div className="flex items-center space-x-2">
+            <Button variant="secondary" size="sm">
+              Resume
+            </Button>
+            <ThemeToggle />
+          </div>
+        </div>
 
-        {/* Mobile Menu Button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          <span className="sr-only">Toggle menu</span>
-        </Button>
+        {/* Mobile Menu Button and Toggle */}
+        <div className="flex items-center md:hidden space-x-2">
+          <ThemeToggle />
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            <span className="sr-only">Toggle menu</span>
+          </Button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Content */}
       <div
         className={cn(
           "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
