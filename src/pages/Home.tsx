@@ -5,6 +5,8 @@ import { ArrowRight } from "lucide-react";
 import ProjectsSection from "@/components/portfolio/ProjectsSection";
 import SkillsSection from "@/components/portfolio/SkillsSection";
 import ContactSection from "@/components/portfolio/ContactSection";
+import AboutSection from "@/components/portfolio/AboutSection";
+import Footer from "@/components/layout/Footer";
 
 const Home = () => {
   return (
@@ -35,11 +37,13 @@ const Home = () => {
           </div>
         </section>
         
+        <AboutSection />
         <ProjectsSection />
         <SkillsSection />
         <ContactSection />
       </main>
       
+      <Footer />
       <MadeWithDyad />
     </div>
   );
