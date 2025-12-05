@@ -4,7 +4,7 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 // Note: We are using Resend for email sending. You must set the RESEND_API_KEY secret in Supabase.
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const TARGET_EMAIL = "yassinbouf90@gmail.com";
-const SENDER_EMAIL = "your-verified-sender@example.com"; // IMPORTANT: Replace this with an email verified in your Resend account.
+const SENDER_EMAIL = "yassinbouf90@gmail.com"; // Updated to verified sender email
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
