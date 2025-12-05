@@ -1,85 +1,81 @@
 import React, { useState, useEffect } from "react";
 
 interface TypingEffectTitleProps {
-  text: string;
+  staticPrefix: string; // e.g., "Hi, I'm Yassin Boufous, a "
+  roles: string[]; // e.g., ["Full Stack Developer", "React Expert", "Problem Solver"]
   typingSpeed?: number;
-  delay?: number;
+  deletingSpeed?: number;
+  pauseTime?: number;
 }
 
 const TypingEffectTitle: React.FC<TypingEffectTitleProps> = ({
-  text,
+  staticPrefix,
+  roles,
   typingSpeed = 100,
-  delay = 500,
+  deletingSpeed = 50,
+  pauseTime = 1500,
 }) => {
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
   const [isTypingComplete, setIsTypingComplete] = useState(false);
 
   useEffect(() => {
-    setDisplayedText(""); // Reset on text change
-    setIsTypingComplete(false);
+    const currentRole = roles[currentRoleIndex];
+    let timeoutId: ReturnType<typeof setTimeout>;
 
-    const timer = setTimeout(() => {
-      let i = 0;
-      const intervalId = setInterval(() => {
-        if (i < text.length) {
-          const nextChar = text[i];
-          // Defensive check: only append if character exists
-          if (nextChar !== undefined) {
-            setDisplayedText((prev) => prev + nextChar);
-            i++;
-          } else {
-            // Should not happen, but stop if it does
-            clearInterval(intervalId);
-            setIsTypingComplete(true);
-          }
+    const handleTyping = () => {
+      if (!isDeleting) {
+        // Typing phase
+        if (displayedText.length < currentRole.length) {
+          setDisplayedText(currentRole.substring(0, displayedText.length + 1));
+          timeoutId = setTimeout(handleTyping, typingSpeed);
         } else {
-          clearInterval(intervalId);
+          // Typing complete, start pause
           setIsTypingComplete(true);
+          timeoutId = setTimeout(() => {
+            setIsDeleting(true);
+            setIsTypingComplete(false);
+          }, pauseTime);
         }
-      }, typingSpeed);
-      return () => clearInterval(intervalId);
-    }, delay);
-    
-    return () => clearTimeout(timer);
-  }, [text, typingSpeed, delay]);
+      } else {
+        // Deleting phase
+        if (displayedText.length > 0) {
+          setDisplayedText(currentRole.substring(0, displayedText.length - 1));
+          timeoutId = setTimeout(handleTyping, deletingSpeed);
+        } else {
+          // Deleting complete, switch role and start typing again
+          setIsDeleting(false);
+          setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+          // State change triggers re-run of useEffect, restarting the loop
+        }
+      }
+    };
 
-  // Logic to dynamically apply primary color styling to 'Yassin Boufous'
-  const name = "Yassin Boufous";
-  const nameIndex = text.indexOf(name);
+    // Start the loop
+    handleTyping();
 
-  const renderText = () => {
-    if (nameIndex === -1 || displayedText.length < nameIndex) {
-      // Name not found or typing hasn't reached the name yet
-      return displayedText;
-    }
+    return () => clearTimeout(timeoutId);
+  }, [currentRoleIndex, isDeleting, displayedText, roles, typingSpeed, deletingSpeed, pauseTime]);
 
-    // Typing has reached or passed the start of the name
-    const preName = text.substring(0, nameIndex);
-    
-    // Determine how much of the name has been typed
-    const nameTypedLength = Math.min(displayedText.length - nameIndex, name.length);
-    const namePart = name.substring(0, nameTypedLength);
-    
-    // Determine the text typed after the name
-    const postNamePart = displayedText.substring(nameIndex + name.length);
-
+  // Render logic
+  const renderTitle = () => {
     return (
       <>
-        {preName}
-        <span className="text-primary">
-          {namePart}
+        {staticPrefix}
+        <span className="text-primary font-extrabold">
+          {displayedText}
         </span>
-        {postNamePart}
       </>
     );
   };
 
   return (
     <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
-      {renderText()}
+      {renderTitle()}
       <span 
         className={`inline-block w-1 h-10 md:h-14 bg-foreground align-middle ml-1 transition-opacity duration-500 ${
-          isTypingComplete ? "opacity-0" : "animate-pulse"
+          isTypingComplete && !isDeleting ? "opacity-0" : "animate-pulse"
         }`}
       >
         &nbsp;

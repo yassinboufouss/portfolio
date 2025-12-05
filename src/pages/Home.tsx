@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 import TypingEffectTitle from "@/components/portfolio/TypingEffectTitle";
 
 const Home = () => {
-  const titleText = "Hi, I'm Yassin Boufous"; // Removed the period
+  const staticPrefix = "Hi, I'm Yassin Boufous, a ";
+  const roles = ["Full Stack Developer", "React Expert", "Problem Solver"];
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -17,7 +18,7 @@ const Home = () => {
         {/* Hero Section */}
         <section className="container mx-auto px-4 py-12 md:py-24 text-center max-w-4xl">
           <div className="animate-in fade-in slide-in-from-top-4 duration-700">
-            <TypingEffectTitle text={titleText} />
+            <TypingEffectTitle staticPrefix={staticPrefix} roles={roles} />
           </div>
           <div className="animate-in fade-in slide-in-from-top-4 duration-700 delay-150">
             <p className="text-xl md:text-2xl text-muted-foreground mb-10">
