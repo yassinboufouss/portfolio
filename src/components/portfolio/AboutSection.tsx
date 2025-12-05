@@ -13,8 +13,8 @@ const AboutSection: React.FC = () => {
           {/* Profile Image/Avatar */}
           <div className="flex-shrink-0">
             <Avatar className="h-48 w-48 md:h-64 md:w-64 border-4 border-primary shadow-xl">
-              <AvatarImage src="/placeholder.svg" alt="Alex Profile" />
-              <AvatarFallback className="text-4xl">A</AvatarFallback>
+              <AvatarImage src="/placeholder.svg" alt="Yassin Boufouss Profile" />
+              <AvatarFallback className="text-4xl">YB</AvatarFallback>
             </Avatar>
           </div>
 
