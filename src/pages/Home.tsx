@@ -24,13 +24,13 @@ const Home = () => {
         {/* Hero Section with Parallax Effect */}
         <section 
           className={cn(
-            "relative py-12 md:py-24 text-center max-w-4xl mx-auto",
+            "relative py-12 md:py-24 text-center", // Removed max-w-4xl mx-auto to allow full width background
             "bg-cover bg-center bg-fixed", // Key classes for parallax
             "before:content-[''] before:absolute before:inset-0 before:bg-background/80 before:backdrop-blur-sm before:z-0" // Overlay for readability
           )}
           style={{ backgroundImage: `url('/images/hero-background.jpg')` }}
         >
-          <div className="container mx-auto px-4 relative z-10">
+          <div className="container relative z-10 max-w-4xl"> {/* Content container for centering and max width */}
             <div className="animate-in fade-in slide-in-from-top-4 duration-700">
               <TypingEffectTitle staticPrefix={staticPrefix} roles={roles} />
             </div>
