@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { MadeWithDyad } from "@/components/made-with-dyad";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 
@@ -34,7 +33,6 @@ const ResumePage: React.FC = () => {
         </div>
       </main>
       <Footer />
-      <MadeWithDyad />
     </div>
   );
 };

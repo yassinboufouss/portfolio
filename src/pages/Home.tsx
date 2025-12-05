@@ -1,4 +1,3 @@
-import { MadeWithDyad } from "@/components/made-with-dyad";
 import Header from "@/components/layout/Header";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -45,7 +44,6 @@ const Home = () => {
       </main>
       
       <Footer />
-      <MadeWithDyad />
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { MadeWithDyad } from "@/components/made-with-dyad";
 import ProjectsSection from "@/components/portfolio/ProjectsSection";
 
 const ProjectsPage: React.FC = () => {
@@ -15,7 +14,6 @@ const ProjectsPage: React.FC = () => {
         </div>
       </main>
       <Footer />
-      <MadeWithDyad />
     </div>
   );
 };
