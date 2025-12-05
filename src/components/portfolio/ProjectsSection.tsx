@@ -23,13 +23,19 @@ const yassinProjects = [
 const ProjectsSection: React.FC = () => {
   return (
     <section id="projects" className="py-16 md:py-24 container mx-auto px-4">
-      <h2 className="text-4xl font-bold text-center mb-12">Featured Projects</h2>
+      <h2 className="text-4xl font-bold text-center mb-12 animate-in fade-in slide-in-from-top-4 duration-700">Featured Projects</h2>
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {yassinProjects.map((project, index) => (
-          <ProjectCard key={index} {...project} />
+          <div 
+            key={index} 
+            className="animate-in fade-in slide-in-from-bottom-8 duration-700"
+            style={{ animationDelay: `${index * 100}ms` }}
+          >
+            <ProjectCard {...project} />
+          </div>
         ))}
       </div>
-      <div className="text-center mt-12">
+      <div className="text-center mt-12 animate-in fade-in duration-700 delay-500">
         <a href="#" className="text-primary hover:underline font-medium">
           View All Projects &rarr;
         </a>
