@@ -1,5 +1,6 @@
 import Header from "@/components/layout/Header";
 import { Button } from "@/components/ui/button";
+import { LiquidButton } from "@/components/ui/LiquidButton"; // Import LiquidButton
 import { ArrowRight } from "lucide-react";
 import AboutSection from "@/components/portfolio/AboutSection";
 import ProjectsSection from "@/components/portfolio/ProjectsSection";
@@ -39,12 +40,12 @@ const Home = () => {
             </div>
             <div className="animate-in fade-in slide-in-from-top-4 duration-700 delay-300">
               <div className="flex justify-center space-x-4">
-                <Button size="lg" className="group" asChild>
+                <LiquidButton size="lg" className="group" asChild>
                   <Link to="/projects">
                     View Projects
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
-                </Button>
+                </LiquidButton>
                 <Button variant="outline" size="lg" asChild>
                   <Link to="/contact">
                     Get in Touch
