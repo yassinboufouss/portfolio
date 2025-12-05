@@ -36,8 +36,10 @@ const Header: React.FC = () => {
             ))}
           </nav>
           <div className="flex items-center space-x-2">
-            <Button variant="secondary" size="sm">
-              Resume
+            <Button variant="secondary" size="sm" asChild>
+              <Link to="/resume">
+                Resume
+              </Link>
             </Button>
             <ThemeToggle />
           </div>
@@ -75,8 +77,10 @@ const Header: React.FC = () => {
               {item.name}
             </Link>
           ))}
-          <Button variant="secondary" className="w-full mt-2">
-            Resume
+          <Button variant="secondary" className="w-full mt-2" asChild>
+            <Link to="/resume" onClick={() => setIsOpen(false)}>
+              Resume
+            </Link>
           </Button>
         </nav>
       </div>

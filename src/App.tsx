@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import ProjectsPage from "./pages/Projects";
 import SkillsPage from "./pages/Skills";
 import ContactPage from "./pages/Contact";
+import ResumePage from "./pages/Resume";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 
@@ -24,6 +25,7 @@ const App = () => (
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/skills" element={<SkillsPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/resume" element={<ResumePage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
