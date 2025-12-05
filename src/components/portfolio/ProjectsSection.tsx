@@ -8,7 +8,7 @@ const yassinProjects = [
     tags: ["React", "TypeScript", "Node.js", "PostgreSQL"],
     liveUrl: "https://scc-pos-developed-by-manga.vercel.app/",
     githubUrl: "#",
-    imageUrl: "/placeholder.svg",
+    imageUrl: "/images/gym-manager-preview.png",
   },
   {
     title: "Self-Hosted Music Collection",
@@ -16,7 +16,7 @@ const yassinProjects = [
     tags: ["Next.js", "Docker", "AWS", "Tailwind CSS"],
     liveUrl: "https://dreamy-seahorse-dash.vercel.app/",
     githubUrl: "#",
-    imageUrl: "/placeholder.svg",
+    imageUrl: "/images/music-collection-preview.png",
   },
 ];
 
