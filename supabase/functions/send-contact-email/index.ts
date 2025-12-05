@@ -16,8 +16,10 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  console.log("Edge Function received request.");
+
   if (!RESEND_API_KEY) {
-    console.error("RESEND_API_KEY is not set.");
+    console.error("RESEND_API_KEY is not set. Please set it in Supabase secrets.");
     return new Response(JSON.stringify({ error: "Server configuration error: Email API key missing." }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -29,7 +31,10 @@ serve(async (req) => {
     const payload = await req.json();
     const newRecord = payload.record;
 
+    console.log("Received payload:", JSON.stringify(payload, null, 2));
+
     if (!newRecord) {
+      console.error("Invalid payload: missing record.");
       return new Response(JSON.stringify({ error: "Invalid payload: missing record." }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -67,7 +72,7 @@ serve(async (req) => {
 
     if (!resendResponse.ok) {
       const errorData = await resendResponse.json();
-      console.error("Resend API Error:", errorData);
+      console.error("Resend API Error:", resendResponse.status, errorData);
       throw new Error(`Failed to send email: ${resendResponse.statusText}`);
     }
 
@@ -78,7 +83,7 @@ serve(async (req) => {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
-    console.error("Edge Function Error:", error);
+    console.error("Edge Function Error:", error.message);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
