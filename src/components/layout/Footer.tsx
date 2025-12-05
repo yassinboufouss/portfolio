@@ -1,6 +1,7 @@
 import React from "react";
 import { Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -31,9 +32,9 @@ const Footer: React.FC = () => {
         </div>
         
         <nav className="space-x-4 text-sm hidden sm:block">
-          <a href="#projects" className="text-muted-foreground hover:text-primary transition-colors">Projects</a>
-          <a href="#skills" className="text-muted-foreground hover:text-primary transition-colors">Skills</a>
-          <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
+          <Link to="/projects" className="text-muted-foreground hover:text-primary transition-colors">Projects</Link>
+          <Link to="/skills" className="text-muted-foreground hover:text-primary transition-colors">Skills</Link>
+          <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link>
         </nav>
       </div>
     </footer>

@@ -2,11 +2,9 @@ import { MadeWithDyad } from "@/components/made-with-dyad";
 import Header from "@/components/layout/Header";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import ProjectsSection from "@/components/portfolio/ProjectsSection";
-import SkillsSection from "@/components/portfolio/SkillsSection";
-import ContactSection from "@/components/portfolio/ContactSection";
 import AboutSection from "@/components/portfolio/AboutSection";
 import Footer from "@/components/layout/Footer";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -24,23 +22,20 @@ const Home = () => {
           </p>
           <div className="flex justify-center space-x-4">
             <Button size="lg" className="group" asChild>
-              <a href="#projects">
+              <Link to="/projects">
                 View Projects
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="#contact">
+              <Link to="/contact">
                 Get in Touch
-              </a>
+              </Link>
             </Button>
           </div>
         </section>
         
         <AboutSection />
-        <ProjectsSection />
-        <SkillsSection />
-        <ContactSection />
       </main>
       
       <Footer />
