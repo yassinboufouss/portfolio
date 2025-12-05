@@ -1,10 +1,11 @@
+// @ts-nocheck
 /// <reference lib="deno.ns" />
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 
 // Note: We are using Resend for email sending. You must set the RESEND_API_KEY secret in Supabase.
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const TARGET_EMAIL = "yassinbouf90@gmail.com";
-const SENDER_EMAIL = "yassinbouf90@gmail.com"; // Updated to verified sender email
+const SENDER_EMAIL = "yassinbouf90@gmail.com"; // Verified sender email
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -83,8 +84,8 @@ serve(async (req) => {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
-    console.error("Edge Function Error:", error.message);
-    return new Response(JSON.stringify({ error: error.message }), {
+    console.error("Edge Function Error:", (error as Error).message);
+    return new Response(JSON.stringify({ error: (error as Error).message }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
