@@ -7,19 +7,19 @@ const AboutSection: React.FC = () => {
   return (
     <section id="about" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 max-w-5xl">
-        <h2 className="text-4xl font-bold text-center mb-12">About Me</h2>
+        <h2 className="text-4xl font-bold text-center mb-12 animate-in fade-in slide-in-from-top-4 duration-700">About Me</h2>
         
         <div className="flex flex-col md:flex-row items-center gap-10">
           {/* Profile Image/Avatar */}
-          <div className="flex-shrink-0">
-            <Avatar className="h-48 w-48 md:h-64 md:w-64 border-4 border-primary shadow-xl">
+          <div className="flex-shrink-0 animate-in fade-in duration-700 delay-100">
+            <Avatar className="h-48 w-48 md:h-64 md:w-64 border-4 border-primary shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
               <AvatarImage src="/images/profile.png" alt="Yassin Boufous Profile" />
               <AvatarFallback className="text-4xl">YB</AvatarFallback>
             </Avatar>
           </div>
 
           {/* Content */}
-          <div className="md:w-2/3 space-y-6 text-lg text-muted-foreground">
+          <div className="md:w-2/3 space-y-6 text-lg text-muted-foreground animate-in fade-in duration-700 delay-200">
             <p>
               I am a dedicated Full Stack Developer with 5+ years of experience specializing in modern JavaScript frameworks like React and Node.js. My passion lies in transforming complex problems into elegant, high-performance web solutions.
             </p>
@@ -29,7 +29,7 @@ const AboutSection: React.FC = () => {
             
             <Separator className="my-6" />
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm font-medium text-foreground">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm font-medium text-foreground animate-in fade-in duration-700 delay-300">
               <div className="flex items-center space-x-2">
                 <Briefcase className="h-5 w-5 text-primary" />
                 <span>5+ Years Experience</span>
