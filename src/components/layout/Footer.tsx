@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
         
         <div className="flex space-x-2">
           <Button variant="ghost" size="icon" asChild>
-            <a href="#" aria-label="GitHub Profile">
+            <a href="https://github.com/yassinboufouss" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
               <Github className="h-5 w-5" />
             </a>
           </Button>
