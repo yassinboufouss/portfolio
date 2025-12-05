@@ -2,6 +2,9 @@ import Header from "@/components/layout/Header";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import AboutSection from "@/components/portfolio/AboutSection";
+import ProjectsSection from "@/components/portfolio/ProjectsSection";
+import SkillsSection from "@/components/portfolio/SkillsSection";
+import ContactSection from "@/components/portfolio/ContactSection";
 import Footer from "@/components/layout/Footer";
 import { Link } from "react-router-dom";
 import TypingEffectTitle from "@/components/portfolio/TypingEffectTitle";
@@ -43,6 +46,9 @@ const Home = () => {
         </section>
         
         <AboutSection />
+        <ProjectsSection />
+        <SkillsSection />
+        <ContactSection />
       </main>
       
       <Footer />
