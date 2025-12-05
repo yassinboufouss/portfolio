@@ -46,18 +46,26 @@ const LiquidButton = React.forwardRef<HTMLButtonElement, LiquidButtonProps>(
         ref={ref}
         {...props}
       >
-        {/* Liquid Effect Element */}
-        <span 
-          className={cn(
-            "absolute inset-0 z-0 transition-transform duration-500 ease-out",
-            "bg-primary/10 dark:bg-primary/20", // Subtle color for the liquid wave
-            "group-hover:scale-[2.5] group-hover:opacity-0",
-            "scale-0 rounded-full"
-          )}
-        />
-        
-        {/* Content Wrapper to ensure text stays above the liquid effect */}
-        <span className="relative z-10">{children}</span>
+        {asChild ? (
+          // If asChild is true, we render the single child (e.g., Link) directly
+          children
+        ) : (
+          // If asChild is false, we render the internal structure for the liquid effect
+          <>
+            {/* Liquid Effect Element (z-0) */}
+            <span 
+              className={cn(
+                "absolute inset-0 z-0 transition-transform duration-500 ease-out",
+                "bg-primary/10 dark:bg-primary/20",
+                "group-hover:scale-[2.5] group-hover:opacity-0",
+                "scale-0 rounded-full"
+              )}
+            />
+            
+            {/* Content Wrapper (z-10) */}
+            <span className="relative z-10">{children}</span>
+          </>
+        )}
       </Comp>
     );
   },
